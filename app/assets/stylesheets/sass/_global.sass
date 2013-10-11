@@ -20,13 +20,17 @@ a
 		border:
 			bottom: 1px solid $blue
 		text:
-			align: center
+			align: left
 		font:
 			size: 21px
 		color: $red
 		padding:
 			top: 15px
 			bottom: 15px
+
+		a
+			padding:
+				left: 10px
 
 	#or
 		font:
@@ -243,6 +247,9 @@ a
 
 	#submit
 		position: absolute
-		bottom: 10px
-		left: 10px
-		z-index: 100
+		top: 18px
+		right: 10px
+		z-index: 500
+
+		&:hover
+			color: $blue
