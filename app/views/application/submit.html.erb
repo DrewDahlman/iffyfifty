@@ -1,0 +1,14 @@
+<div id='submit_form'>
+	<form method='POST' action='/save'>
+		<input type='text' name='url' placeholder='url' required />
+		<br/>
+		<input type='text' name='title' placeholder='Title' required />
+		<br/>
+		<select name='iffy' required>
+			<option disabled selected value="">Is this link iffy?</option>
+			<option value='false'>no</option>
+			<option value='true'>yes</option>
+		</select>
+		<input type='submit' id='sub' value='submit' />
+	</form>
+</div>

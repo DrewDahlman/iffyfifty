@@ -1,0 +1,17 @@
+<div id='panels'>
+	<div class='panel' id='panel_a'>
+		<div class='fifty'><%= @a_title %></div>
+		<div class='flag' data-id='<%= @a_id %>'>flag</div>
+	</div>
+
+	<div class='panel' id='panel_b'>
+		<div class='fifty'><%= @b_title %></div>
+		<div class='flag' data-id='<%= @b_id %>'>flag</div>
+	</div>
+</div>
+<div id='or'>OR</div>
+<div id='new'>NEW</div>
+<div id='result'>
+	<div id='close'>x</div>
+	<iframe id='frame' src='<%= @winner.url %>' height='80%' width='80%' />
+</div>

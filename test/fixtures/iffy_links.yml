@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  user: 1
+  clicks: 1
+  flag: false
+  type: false
+  views: 1
+
+two:
+  url: MyString
+  user: 1
+  clicks: 1
+  flag: false
+  type: false
+  views: 1

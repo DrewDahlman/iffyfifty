@@ -1,0 +1,2 @@
+module IffyLinksHelper
+end
