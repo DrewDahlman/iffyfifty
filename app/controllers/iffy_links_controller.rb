@@ -39,8 +39,24 @@ class IffyLinksController < ApplicationController
 			@link.url = params[:url]
 			@link.iffy = params[:iffy]
 			@link.save
-			render :json => @link, :root => false
-			# render :json => {:title => params[:title], :url => params[:url], :iffy => params[:iffy]}
+
+			@a_rand_record = @link
+			@b_offset = rand(IffyLink.count)
+			@b_rand_record = IffyLink.first(:offset => @b_offset)
+
+			winner = rand(0..1)
+
+	    	@a = @a_rand_record.id
+		  	@b = @b_rand_record.id
+
+		  	if winner == 0
+		  		@c = @a_rand_record.id
+		  	else 
+		  		@c = @b_rand_record.id
+		  	end
+
+	    	@url = Base64.encode64("#{@a}&#{@b}&#{@c}")
+	    	redirect_to("/iffy/#{@url}")
 		else
 			render :text => "Oops! You need to include a valid url!"
 		end

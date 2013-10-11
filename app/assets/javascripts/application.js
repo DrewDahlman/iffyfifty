@@ -28,9 +28,10 @@ $(function() {
 
 	$("#close").click(function() {
 		$("#panels").height('100%');
-		$("#close").hide();
-		$("#new").show();
-		$("#new").click(iffy_fifty)
+		// $("#close").hide();
+		// $("#new").show();
+		// $("#new").click(iffy_fifty)
+		iffy_fifty();
 	});
 
 	$(".flag").click(function(event) {
