@@ -15,22 +15,53 @@
 //= require_tree .
 $(function() {
 
+	if (window.localStorage.getItem('score')) {
+		$("#score").html(window.localStorage.getItem('score'));
+		$("#pass").click(function() {
+			var score = parseInt(window.localStorage.getItem('score'));
+			if (score > 0) {
+				window.localStorage.setItem('score', score - 1);
+				window.location = "/";
+			}
+		});
+	} else {
+		$("#overlay").show();
+		$("#play_btn").click(function() {
+			$("#overlay").fadeOut();
+			window.localStorage.setItem('score', 0)
+		});
+	}
 	$(".panel").click(function(event) {
 		if (!$(event.target).hasClass('flag')) {
-			$("#panels").height('0%');
-			$("#or").hide();
+			var winner = $("#panels").data('winner');
+			var choice = $(this).data('id');
+			$("#panel_b,#or").hide();
+			$("#panels").css({
+				'column-count': '1'
+			});
+			if (winner == choice) {
+				$("#panel_a .fifty").html('CORRECT! +1');
+				var score = parseInt(window.localStorage.getItem('score'));
+				window.localStorage.setItem('score', score + 1);
+				$("#score").html(window.localStorage.getItem('score'))
+			} else {
+				$("#panel_a .fifty").html("WRONG!");
+			}
+
 			setTimeout(function() {
-				$("#close").show();
-			}, 3000);
+				$("#panels").height('0%');
+				$("#or").hide();
+				setTimeout(function() {
+					$("#close").show();
+				}, 3000);
+			}, 1500);
+
 		}
 
 	});
 
 	$("#close").click(function() {
 		$("#panels").height('100%');
-		// $("#close").hide();
-		// $("#new").show();
-		// $("#new").click(iffy_fifty)
 		iffy_fifty();
 	});
 
@@ -52,10 +83,10 @@ $(function() {
 
 	function flag(id) {
 		$.ajax({
-			url: '/flag/'+id,
+			url: '/flag/' + id,
 			type: 'GET',
 			success: function(data) {
-				
+
 			}
 		});
 	}

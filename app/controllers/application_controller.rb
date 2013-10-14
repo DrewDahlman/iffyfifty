@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 	  	@link_a = IffyLink.find_by_id(@a)
 	  	@link_b = IffyLink.find_by_id(@b)
 	  	@winner = IffyLink.find_by_id(@c)
+	  	@winner_id = @winner.id
 
 	  	@a_title = @link_a.title
 	  	@b_title = @link_b.title
